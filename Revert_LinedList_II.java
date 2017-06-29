@@ -25,10 +25,10 @@ public class Solution {
      */
     public ListNode reverseBetween(ListNode head, int m , int n) {
         // write your code
-        ListNode nodePreM;
-        ListNode nodeAtN;
-        ListNode nodeAfterN;
-        ListNode nodeCur;
+        ListNode nodePreM = null;
+        ListNode nodeAtN = null;
+        ListNode nodeAfterN = null;
+        ListNode nodeCur = new ListNode(0);
         nodeCur.next = head;
         int count = 0;
         while (nodeCur != null) {
