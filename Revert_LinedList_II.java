@@ -25,10 +25,10 @@ public class Solution {
      */
     public ListNode reverseBetween(ListNode head, int m , int n) {
         // write your code
-        ListNode nodePreM;
-        ListNode nodeAtN;
-        ListNode nodeAfterN;
-        ListNode nodeCur;
+        ListNode nodePreM = null;
+        ListNode nodeAtN = null;
+        ListNode nodeAfterN = null;
+        ListNode nodeCur = new ListNode(0);
         nodeCur.next = head;
         int count = 0;
         while (nodeCur != null) {
@@ -69,19 +69,22 @@ public class Solution {
  * }
  */
 public class Solution {
+    /*
+    1.find premNode
+    2.track mNode, let nNode=mNode, put postnNode
+    3.for loop move nNode postnNode
+    */
     public ListNode reverseBetween(ListNode head, int m, int n) {
+        //empty list and boundary cases
         if (m >= n || head == null) {
             return head;
         }
-
+        //if m == 1
         ListNode dummy = new ListNode(0);
         dummy.next = head;
         head = dummy;
 
         for (int i = 1; i < m; i++) {
-            if (head == null) {
-                return null;
-            }
             head = head.next;
         }
 
@@ -89,9 +92,6 @@ public class Solution {
         ListNode mNode = head.next;
         ListNode nNode = mNode, postnNode = mNode.next;
         for (int i = m; i < n; i++) {
-            if (postnNode == null) {
-                return null;
-            }
             ListNode temp = postnNode.next;
             postnNode.next = nNode;
             nNode = postnNode;
