@@ -49,8 +49,13 @@ public class Solution {
 
 //better solution O(log(N))
 /*
-go left: 1. without right child --> last root  2. with right child --> all the way down left child
-go right: 1. without right child --> null  2. with right child --> all the way down left child
+if(p.val < root.val):
+ check left;
+if(p == root):
+ if root.right == null: return successor
+ else: go all the way left down root.right to the last node
+if (p.val > root.val)
+ check right;
 */
 public class Solution {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
@@ -81,7 +86,38 @@ public class Solution {
     }
 }
 
-// version2
+//version2
+public class Solution {
+    TreeNode successor = null;
+    public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
+        // write your code here
+        if (root!=null) {
+            if (p.val < root.val) {
+                successor = root;
+                return inorderSuccessor(root.left, p);
+            }
+            else if (p == root) {
+                if (root.right!=null) {
+                    TreeNode result = root.right;
+                    while(result.left!=null) {
+                        result = result.left;
+                    }
+                    return result;
+                } else {
+                    return successor;
+                }
+            }
+            else {
+                return inorderSuccessor(root.right, p);
+            }
+        }
+        else {
+            return null;
+        }
+    }
+}
+
+// version3
 public class Solution {
     public TreeNode inorderSuccessor(TreeNode root, TreeNode p) {
         // write your code here
