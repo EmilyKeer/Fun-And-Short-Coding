@@ -1,0 +1,31 @@
+Two sum:
+Method  time complexity   space complexity
+HashMap(HashSet)  O(n)			O(n)
+2 pointers        O(nlogn)		O(1)	
+
+Consider:
+sorted?
+duplicated?
+return index, or number, or counter?
+
+
+Use returnType/Pair and Arrays.sort Comparator:
+public class Pair {
+         int idx;
+         int num;
+         Pair(int idx, int num) {
+             this.idx = idx;
+             this.num = num;
+         }
+     }
+
+ Pair[] pairs = new Pair[nums.length];
+        for (int i = 0; i < nums.length; i++) {
+            pairs[i] = new Pair(i, nums[i]); //use new to construct Pair
+        }
+        Arrays.sort(pairs, new Comparator<Pair>(){
+            public int compare(Pair p1, Pair p2) {
+                return p1.num - p2.num;
+            }
+            });
+
