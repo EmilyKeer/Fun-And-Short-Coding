@@ -4,7 +4,6 @@ new ArrayList<Integer>(Arrays.asList(j, i));
 
 
 //HashMap
-
 HashMap<Integer, String> hmap = new HashMap<Integer, String>();
 hmap.put(3, "English"); //update --> replace
 
